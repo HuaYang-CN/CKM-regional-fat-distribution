@@ -1,0 +1,31 @@
+# R session files
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# PRIVATE CLINICAL DATA — NEVER COMMIT
+data/private/china/*
+!data/private/china/README.md
+!data/private/china/china_derivation_schema.csv
+!data/private/china/china_longitudinal_schema.csv
+
+# Downloaded public raw/intermediate NHANES files
+data/public/nhanes/data_raw/
+data/public/nhanes/data_processed/
+data/public/nhanes/00_metadata/
+data/public/nhanes/QC/
+
+# Generated results
+results/
+
+# Temporary / cache
+*.tmp
+*.log

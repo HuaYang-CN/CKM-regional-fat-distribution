@@ -1,0 +1,8 @@
+CKM GitHub repository preparation audit
+=======================================
+Investigator-specific path hits: 0
+PASS: no investigator-specific local paths detected.
+
+PASS: private Chinese participant-level datasets are not included.
+PASS: .gitignore blocks data/private/china/* except README/schema templates.
+PASS: generated results and downloaded NHANES raw/intermediate files are ignored.

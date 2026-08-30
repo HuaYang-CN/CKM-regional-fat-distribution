@@ -1,0 +1,14 @@
+script,analysis_scope,purpose
+01_derivation_pca_collinearity.R,Chinese derivation cohort,"PCA, collinearity, baseline table, Figure 1"
+02_association_rcs.R,Chinese derivation cohort,"Logistic regression and RCS, Figure 2"
+03_internal_nested_cv.R,Chinese derivation cohort,Strict nested cross-validation
+04_internal_secondary_metrics.R,Chinese derivation cohort,"Calibration, NRI/IDI, Brier, DCA"
+05_internal_posthoc_SHAP.R,Chinese derivation cohort,Post-hoc SHAP interpretation
+06_internal_longitudinal.R,Repeated-measures cohort,PC1/PC2 paired changes and dynamic reference
+07a_nhanes_download_harmonize.R,NHANES 2011-2018,"Public data download, harmonization, initial CKM/PREVENT processing"
+07b_nhanes_revised_prevent_ckm_qc.R,NHANES 2011-2018,Final revised PREVENT/CKM staging QC
+08_nhanes_external_replication.R,NHANES 2011-2018,PCA replication and survey-weighted association
+09_nhanes_sensitivity_final_outputs.R,NHANES 2011-2018,"Fixed-loading transfer, alcohol, sex interaction, LOCO, external performance"
+10_age_sensitivity.R,China + NHANES,Age-adjusted sensitivity and PC2-by-age interaction
+11_study_flow.R,Study design,Supplementary Figure S1
+12_graphical_abstract.R,Visualization,Editable vector graphical abstract

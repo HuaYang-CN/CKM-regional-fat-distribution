@@ -1,0 +1,9 @@
+Code availability
+
+The R scripts used for data processing, statistical analyses, model development,
+sensitivity analyses, external replication, and figure generation are publicly available
+at [GITHUB_REPOSITORY_URL] and are archived in Zenodo at [ZENODO_DOI].
+
+The public repository does not contain individual-level Chinese clinical data. NHANES
+2011–2018 data are publicly available from the National Center for Health Statistics and can
+be retrieved using the repository's NHANES preparation scripts.

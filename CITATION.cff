@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the associated manuscript."
+title: "Analysis code for Regional Fat-Distribution Phenotypes and CKM Severity"
+version: 1.0.0
+date-released: 2026-08-30
+authors:
+  - family-names: Yang
+    given-names: Hua
+  - family-names: Sun
+    given-names: Tianwei
+  - family-names: Zhou
+    given-names: Meng
+  - family-names: Xu
+    given-names: Feng
+  - family-names: Xu
+    given-names: Rui
+  - family-names: Zhao
+    given-names: Jiajun
+keywords:
+  - cardiovascular-kidney-metabolic syndrome
+  - body composition
+  - principal component analysis
+  - NHANES
+  - external replication
+license: "NOASSERTION"
