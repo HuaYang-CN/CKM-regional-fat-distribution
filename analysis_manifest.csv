@@ -10,5 +10,4 @@ script,analysis_scope,purpose
 08_nhanes_external_replication.R,NHANES 2011-2018,PCA replication and survey-weighted association
 09_nhanes_sensitivity_final_outputs.R,NHANES 2011-2018,"Fixed-loading transfer, alcohol, sex interaction, LOCO, external performance"
 10_age_sensitivity.R,China + NHANES,Age-adjusted sensitivity and PC2-by-age interaction
-11_study_flow.R,Study design,Supplementary Figure S1
-12_graphical_abstract.R,Visualization,Editable vector graphical abstract
+ 
