@@ -17,7 +17,6 @@ R/08_nhanes_external_replication.R,eaf39a6a7c9b83f6e09f71e1c80e83d0,72006
 R/09_nhanes_sensitivity_final_outputs.R,0917bc61062cd9752e2ed57286595be9,80735
 R/10_age_sensitivity.R,770e4d46d55a293da2b8c27246b3880b,39274
 R/11_study_flow.R,73287655ee4b4e6aa177e9391128e951,1942
-R/12_graphical_abstract.R,fbde6bfd2f9f1b243494e9a8430ce102,26035
 R/99_capture_session_info.R,820bd0f2684ce641209ac127f7da3e49,195
 README.md,f1824e8f31af558e63474156a07a9306,5952
 REPOSITORY_AUDIT.txt,0d3905429f8932494b764fb1d4c07e51,395
