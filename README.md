@@ -40,7 +40,6 @@ analyses, age-adjustment sensitivity, and figure generation.
 │   ├── 09_nhanes_sensitivity_final_outputs.R
 │   ├── 10_age_sensitivity.R
 │   ├── 11_study_flow.R
-│   ├── 12_graphical_abstract.R
 │   └── 99_capture_session_info.R
 ├── data/
 │   ├── private/china/
@@ -132,8 +131,6 @@ Nested cross-validation and bootstrap analyses can be computationally intensive.
 | `08_nhanes_external_replication.R` | NHANES PCA/association replication |
 | `09_nhanes_sensitivity_final_outputs.R` | Fixed China-loading transfer, alcohol, LOCO and final Main Figure 4 |
 | `10_age_sensitivity.R` | Age adjustment and PC2×age interaction; Supplementary Figure S12 |
-| `11_study_flow.R` | Supplementary Figure S1 |
-| `12_graphical_abstract.R` | Editable vector graphical abstract |
 
 Some internal output filenames retain historical stage labels from the locked analysis
 workflow. The manuscript mapping above, rather than historical filenames, defines the final
