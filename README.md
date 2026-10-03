@@ -1,161 +1,65 @@
-# Regional Fat-Distribution Phenotypes and CKM Severity
+# Fixed-loading transport of a regional adiposity pattern across cohorts with concurrent cardiovascular-kidney-metabolic associations
 
-Analysis code accompanying the manuscript:
+## Purpose and manuscript relationship
+Software accompanying the final manuscript titled above. This release preserves the retained method-locked analysis and construction sources. It supports reproducibility review without changing results, samples, models, figures or tables.
 
-**Regional Fat-Distribution Phenotypes and Cardiovascular-Kidney-Metabolic Syndrome
-Severity: Cross-Sectional, Longitudinal, and Cross-Platform Replication Analyses**
+## Repository structure
+`R/` contains the two public construction scripts and four final refactored sources; `scripts/` contains read-only preflight and final display construction; `manifests/` records inputs and analysis order; `sessionInfo/` contains two historical run records; `documentation/` describes governance, schemas, attribution and limitations. `00_config.R` configures public construction; final analyses source `R/00_CKM_refactored_config.R`. Generated `data/`, `restricted_data/` and `results/` are excluded.
 
-This repository contains the R code used for the Chinese derivation analyses, secondary
-internal model-performance analyses, exploratory repeated-measures analyses, NHANES
-2011–2018 external cross-platform replication, fixed-loading transportability, sensitivity
-analyses, age-adjustment sensitivity, and figure generation.
+## Data sources and public / controlled-access boundary
+- **A. Public NHANES:** 2011-2018 public-use components from [CDC/NCHS](https://wwwn.cdc.gov/nchs/nhanes/). 07a acquires/harmonizes them; 07b creates the revised staged analysis input. Raw/intermediate files are regenerated, not redistributed.
+- **B. Chinese cohorts:** code is provided; participant-level Chinese clinical data are available only through controlled access. They are not reproducible from this repository alone.
+- **C. Derived manuscript outputs included:** none. Locked manuscripts, tables, figures, master results and participant-level QA are not bundled.
+- **D. Restricted exclusions:** Chinese source spreadsheets/records, participant scores/IDs, master RDS, private logs and credentials.
 
-## Repository principles
+## Software environment
+The retained final analysis and table/figure execution records report **R 4.5.1 (2025-06-13 ucrt)**. See `sessionInfo/analysis_sessionInfo.txt` and `sessionInfo/tables_figures_sessionInfo.txt`, which are authoritative historical records; only local input-path text has been redacted. Verified versions include survey 4.4-2, rms 8.1-0, pROC 1.19.0.1, caret 7.0-1, recipes 1.3.1, gbm 2.2.2, randomForest 4.7-1.2, glmnet 4.1-10 and fastshap 0.1.1. Package sources/licenses remain separate. No dependency lockfile or complete environment container is claimed. Construction also uses preventr, nhanesA, haven and tidyverse components; see source package lists. Original scripts may install missing packages when run; preflight installs nothing.
 
-- No individual-level Chinese clinical data are included.
-- No local Windows paths or investigator-specific computer paths are required.
-- NHANES data are public and can be downloaded by the included code.
-- Generated results and downloaded raw data are excluded from Git by `.gitignore`.
-- The final revised PREVENT/CKM staging is produced by `07b_nhanes_revised_prevent_ckm_qc.R`.
-- Age-adjusted models are diagnostic sensitivity analyses; they do not replace the
-  prespecified primary models.
-
-## Directory structure
-
+## Reproduction workflow and main script order
+Run direct commands from the repository root with Rscript on your PATH. Start with the read-only check:
 ```text
-.
-├── 00_config.R
-├── run_all.R
-├── R/
-│   ├── 00_install_packages.R
-│   ├── 01_derivation_pca_collinearity.R
-│   ├── 02_association_rcs.R
-│   ├── 03_internal_nested_cv.R
-│   ├── 04_internal_secondary_metrics.R
-│   ├── 05_internal_posthoc_SHAP.R
-│   ├── 06_internal_longitudinal.R
-│   ├── 07a_nhanes_download_harmonize.R
-│   ├── 07b_nhanes_revised_prevent_ckm_qc.R
-│   ├── 08_nhanes_external_replication.R
-│   ├── 09_nhanes_sensitivity_final_outputs.R
-│   ├── 10_age_sensitivity.R
-│   ├── 11_study_flow.R
-│   └── 99_capture_session_info.R
-├── data/
-│   ├── private/china/
-│   └── public/nhanes/
-└── results/                  # generated; not committed
+Rscript scripts/00_reproducibility_preflight.R
 ```
+Then follow the public construction chain. The complete analysis sequence below is for authorized users with the controlled inputs. Details of inputs, outputs and manuscript mapping are in `manifests/analysis_manifest.tsv`.
 
-## Software
-
-The manuscript reports analyses in **R 4.4.0**.
-
-Install packages once from the repository root:
-
-```bash
-Rscript R/00_install_packages.R
-```
-
-The repository uses common CRAN packages including `survey`, `preventr`, `nhanesA`,
-`caret`, `gbm`, `glmnet`, `fastshap`, `shapviz`, `rms`, `pROC`, and `ggplot2`.
-
-## Reproducing the Chinese analyses
-
-The Chinese participant-level datasets are not public. Authorized users should place
-deidentified files in:
-
+## NHANES public-data workflow
 ```text
-data/private/china/cross_filtered.xlsx
-data/private/china/suifang.xlsx
-```
-
-See `data/private/china/README.md` and the header-only schema files.
-
-Then run:
-
-```bash
-Rscript run_all.R china
-```
-
-Locked checks used in the final analysis include a derivation cohort of **n=955** and a
-distinct repeated-measures cohort of **n=100** (37 mild-to-severe progressors and 63
-stable-severe participants).
-
-## Reproducing the public NHANES analyses
-
-Internet access is required for the first step.
-
-```bash
-Rscript run_all.R nhanes
-```
-
-Or run the stages individually:
-
-```bash
 Rscript R/07a_nhanes_download_harmonize.R
 Rscript R/07b_nhanes_revised_prevent_ckm_qc.R
-Rscript R/08_nhanes_external_replication.R
-Rscript R/09_nhanes_sensitivity_final_outputs.R
 ```
+07a downloads public source components and produces `data/public/nhanes/data_processed/NHANES_2011_2018_harmonized_all.rds`; 07b consumes that file and produces `NHANES_2011_2018_external_validation_ready_REVISED.rds`, staged data and QC summaries. Internet access, packages and disk space are required. Large downloads were not performed in Stage10B.
 
-The locked final external cohort contains **2,254** adults aged 30–59 years with **157**
-advanced CKM events (Stages 3–4). Survey-weighted analyses use the combined fasting
-subsample weight and NHANES PSU/strata variables.
+**Final-analysis boundary:** the retained final monolithic analysis executes China sections first and uses a Chinese PCA reference for transport. It cannot be run from public NHANES data alone. The acquisition/construction chain is public-data reproducible; independent execution of all final NHANES analyses is not currently provided. Read `documentation/PUBLIC_WORKFLOW_LIMITATIONS.md` before claiming complete public-data reproduction.
 
-Official source:
-https://wwwn.cdc.gov/nchs/nhanes/
+## Chinese restricted-data workflow
+Restricted input not distributed. Authorized users provide `restricted_data/china/cross_filtered.xlsx` and `restricted_data/china/suifang.xlsx`, or set `CKM_CHINA_CROSS_FILE` and `CKM_CHINA_LONG_FILE` to authorized paths. Schemas and governance are in `documentation/RESTRICTED_INPUTS.md`. Do not add real records to schemas.
 
-## Complete workflow
-
-After the two authorized Chinese input files are present:
-
-```bash
-Rscript run_all.R all
+The final config defaults to `results/` and the 07b output above. Optional path overrides: `CKM_REPO_ROOT`, `CKM_OUTPUT_ROOT`, `CKM_NHANES_READY_FILE`, `CKM_NHANES_RAW_DIR`. Preserve all scientific settings. Then:
+```text
+Rscript R/01_CKM_refactored_analysis_v7_methodlock.R
+Rscript R/02_CKM_tables_figures_highimpact_v19_reconciled.R
+Rscript R/03_CKM_supplementary_tables_S1_S26_v8_reconciled.R
+Rscript scripts/Stage7_5_Final_Figure_Supplement_Production.R
 ```
+The last script defaults to the master under `results/01_locked_analysis_objects/`; if using another output root, set `STAGE75_MASTER_RDS` to the authorized master file. Production writes into `results/stage7_5_production/`. Analysis/production can generate participant-level objects and QA CSVs: keep them controlled and out of public archives.
 
-This runs the Chinese and NHANES pipelines and then the age-sensitivity analysis.
+## Expected outputs and manuscript mapping
+The final main analysis saves `CKM_refactored_master_results.rds` and tidy/audit records. The table/figure and Supplement scripts consume saved results; supplementary tables cover 1-26. Final display construction supports Figure 1 (study architecture/Chinese loading contrast), Figure 2 (Chinese concurrent associations), Figure 3 (NHANES replication/transport) and Figure 4 (selected repeated measures), plus Supplementary Figures 1 and 13. Generated output names can retain historical labels; the final map is the analysis manifest. Frozen publication artifacts are not distributed or regenerated here.
 
-Nested cross-validation and bootstrap analyses can be computationally intensive.
+## License
+MIT; see LICENSE. Existing 2026 HuaYang-CN copyright notice preserved. Dependencies retain their licenses; attribution is described in `documentation/CREATORS_AND_LICENSE.md`.
 
-## Analysis-to-manuscript map
+## Citation
+Use CITATION.cff for this software version 1.0.1 and cite the associated manuscript. No manuscript DOI or new Zenodo DOI has been assigned in this candidate. Hua Yang is the software creator, explicitly confirmed by the author for this release; manuscript author/contribution roles are unchanged.
 
-| Script | Main purpose |
-|---|---|
-| `01_derivation_pca_collinearity.R` | PCA phenotype derivation, collinearity, Figure 1 |
-| `02_association_rcs.R` | Logistic associations and restricted cubic splines, Figure 2 |
-| `03_internal_nested_cv.R` | Strict nested CV and feature-set comparison |
-| `04_internal_secondary_metrics.R` | NRI/IDI, calibration, Brier, DCA |
-| `05_internal_posthoc_SHAP.R` | Post-hoc GBM SHAP interpretation |
-| `06_internal_longitudinal.R` | Repeated-measures PC1/PC2 analyses, final Main Figure 3 |
-| `08_nhanes_external_replication.R` | NHANES PCA/association replication |
-| `09_nhanes_sensitivity_final_outputs.R` | Fixed China-loading transfer, alcohol, LOCO and final Main Figure 4 |
-| `10_age_sensitivity.R` | Age adjustment and PC2×age interaction; Supplementary Figure S12 |
+## Data Availability
+Public NHANES components can be retrieved using the provided code. Chinese inputs require investigator and applicable institutional review. No automatic access entitlement, unrestricted redistribution or identifiable source-record sharing is implied. See the approved controlled-access terms in `documentation/RESTRICTED_INPUTS.md`.
 
-Some internal output filenames retain historical stage labels from the locked analysis
-workflow. The manuscript mapping above, rather than historical filenames, defines the final
-figure role.
+## Code Availability
+The [existing public repository](https://github.com/HuaYang-CN/CKM-regional-fat-distribution) and historical v1.0.0 release were verified during preparation. This 1.0.1 candidate is a new correction release and must not overwrite v1.0.0. Publication status and exact archive identifiers are recorded separately in the Stage10B fact record. An older DOI must not be represented as archiving this candidate without a content/version match.
 
-## Data availability
+## Limitations of reproducibility
+Only syntax, provenance, portability and read-only preflight were checked here; model fitting and scientific reproduction were not rerun. The final workflow needs controlled Chinese inputs; no NHANES-only final execution wrapper is supplied. Chinese upstream age/cohort-construction code was not retained. Two historical sessions document the original environment; installed packages today may differ. Prepared older split analyses and the absent graphical abstract are excluded. No fully reproducible-from-repository-alone claim is made.
 
-Chinese cohort data are not publicly deposited because of participant privacy and
-institutional data-governance requirements. Deidentified data may be available from the
-corresponding author upon reasonable request, subject to institutional review and any
-required data-use agreement.
-
-NHANES 2011–2018 data are publicly available from the National Center for Health
-Statistics.
-
-## Code availability statement after public release
-
-A manuscript-ready version is provided in `CODE_AVAILABILITY_TEXT.txt`. After creating a
-GitHub release and Zenodo archive, replace the placeholders with the real repository URL and
-DOI.
-
-## Reproducibility notes
-
-- Run scripts from the repository root.
-- If running from another directory, set `CKM_REPO_ROOT` to the repository path.
-- `R/99_capture_session_info.R` writes the actual package/session environment used locally.
-- Fixed random seeds are retained in the analysis scripts.
-- Do not upload private Chinese clinical data to this repository.
+## Contact
+Corresponding author: Jiajun Zhao, jjzhao@sdu.edu.cn; [ORCID](https://orcid.org/0000-0002-8697-4791).

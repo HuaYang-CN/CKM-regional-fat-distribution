@@ -1,0 +1,9 @@
+# Public workflow and final implementation
+
+07a -> 07b is the retained public NHANES acquisition/construction chain, supported by the Stage9A provenance records and the retained input MD5 manifest. The output of 07b is the NHANES input consumed by the final method-locked analysis. A new download/run was not performed during release preparation, so current source availability and numerical byte-equivalence are not certified by this release check.
+
+The older prepared split scripts (01-06, 08-11), run_all.R and a missing graphical-abstract entry are excluded. They predate the final refactored method lock; equivalence to the retained final implementation has not been established. Do not use them as a substitute for final results.
+
+The final monolithic analysis executes restricted China derivation/repeated-measures sections before NHANES and uses the locked Chinese PCA object for fixed-loading transport. This release therefore supports independent public acquisition/construction, but does not expose an independently executable final NHANES-only analysis entry point. Obtaining public NHANES data alone is insufficient to execute the entire retained final script. Creating such an entry point or distributing a reviewed aggregate-only PCA reference is future work; neither was introduced by altering scientific logic in Stage10B. NHANES-native analyses are present in section 4 of the retained script, but users should not infer that skipping earlier sections is validated.
+
+No scientific analyses or model fits were run. Final figures and tables remain frozen outside the repository. Script output labels are historical; README maps them to final manuscript roles. No package versions are invented or inserted into sessionInfo records. Future package installation does not recreate the historical environment automatically.

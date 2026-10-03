@@ -1,20 +1,17 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite the associated manuscript."
-title: "Analysis code for Regional Fat-Distribution Phenotypes and CKM Severity"
+message: "Please cite this software and the associated manuscript when using the code."
 type: software
-version: 1.0.0
-date-released: 2026-08-31
-
+title: "Analysis code for Fixed-loading transport of a regional adiposity pattern across cohorts with concurrent cardiovascular-kidney-metabolic associations"
+version: 1.0.1
+repository-code: "https://github.com/HuaYang-CN/CKM-regional-fat-distribution"
+license: MIT
 authors:
-  - family-names: "Yang"
-    given-names: "Hua"
-
+  - family-names: Yang
+    given-names: Hua
 keywords:
-  - "cardiovascular-kidney-metabolic syndrome"
-  - "body composition"
-  - "principal component analysis"
-  - "NHANES"
-  - "external replication"
-  - "fat distribution"
-
-license: "MIT"
+  - cardiovascular-kidney-metabolic syndrome
+  - regional adiposity
+  - principal component analysis
+  - NHANES
+  - fixed-loading transport
+abstract: "Code accompanying the associated manuscript, with public NHANES acquisition and construction scripts and the retained final analysis implementation. Chinese participant-level inputs are controlled-access and are not distributed."
