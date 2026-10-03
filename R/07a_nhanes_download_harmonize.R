@@ -1,7 +1,7 @@
 # =============================================================================
 # PUBLIC RELEASE SCRIPT: NHANES 2011-2018 download, harmonization and initial staging
 # Repository paths are relative and no participant-level data are bundled.
-# See README.md and data/private/china/README.md before running.
+# See README.md and documentation/RESTRICTED_INPUTS.md before running.
 # =============================================================================
 
 # ========================================================================

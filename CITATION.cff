@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Please cite this software and the associated manuscript when using the code."
 type: software
 title: "Analysis code for Fixed-loading transport of a regional adiposity pattern across cohorts with concurrent cardiovascular-kidney-metabolic associations"
-version: 1.0.1
+version: 1.0.2
 repository-code: "https://github.com/HuaYang-CN/CKM-regional-fat-distribution"
 license: MIT
 authors:

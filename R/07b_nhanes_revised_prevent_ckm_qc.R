@@ -1,7 +1,7 @@
 # =============================================================================
 # PUBLIC RELEASE SCRIPT: Revised PREVENT and CKM staging QC
 # Repository paths are relative and no participant-level data are bundled.
-# See README.md and data/private/china/README.md before running.
+# See README.md and documentation/RESTRICTED_INPUTS.md before running.
 # =============================================================================
 
 # ==============================================================================

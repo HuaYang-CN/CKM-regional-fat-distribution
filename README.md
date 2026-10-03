@@ -50,13 +50,13 @@ The final main analysis saves `CKM_refactored_master_results.rds` and tidy/audit
 MIT; see LICENSE. Existing 2026 HuaYang-CN copyright notice preserved. Dependencies retain their licenses; attribution is described in `documentation/CREATORS_AND_LICENSE.md`.
 
 ## Citation
-Use CITATION.cff for this software version 1.0.1 and cite the associated manuscript. No manuscript DOI or new Zenodo DOI has been assigned in this candidate. Hua Yang is the software creator, explicitly confirmed by the author for this release; manuscript author/contribution roles are unchanged.
+Use CITATION.cff for this software version 1.0.2 and cite the associated manuscript. No manuscript DOI or new Zenodo DOI has been assigned in this candidate. Hua Yang is the software creator, explicitly confirmed by the author for this release; manuscript author/contribution roles are unchanged.
 
 ## Data Availability
 Public NHANES components can be retrieved using the provided code. Chinese inputs require investigator and applicable institutional review. No automatic access entitlement, unrestricted redistribution or identifiable source-record sharing is implied. See the approved controlled-access terms in `documentation/RESTRICTED_INPUTS.md`.
 
 ## Code Availability
-The [existing public repository](https://github.com/HuaYang-CN/CKM-regional-fat-distribution) and historical v1.0.0 release were verified during preparation. This 1.0.1 candidate is a new correction release and must not overwrite v1.0.0. Publication status and exact archive identifiers are recorded separately in the Stage10B fact record. An older DOI must not be represented as archiving this candidate without a content/version match.
+The [existing public repository](https://github.com/HuaYang-CN/CKM-regional-fat-distribution) and historical v1.0.0 release were verified during preparation. This 1.0.2 candidate is a new correction release and must not overwrite v1.0.0. Publication status and exact archive identifiers are recorded separately in the Stage10B fact record. An older DOI must not be represented as archiving this candidate without a content/version match.
 
 ## Limitations of reproducibility
 Only syntax, provenance, portability and read-only preflight were checked here; model fitting and scientific reproduction were not rerun. The final workflow needs controlled Chinese inputs; no NHANES-only final execution wrapper is supplied. Chinese upstream age/cohort-construction code was not retained. Two historical sessions document the original environment; installed packages today may differ. Prepared older split analyses and the absent graphical abstract are excluded. No fully reproducible-from-repository-alone claim is made.
