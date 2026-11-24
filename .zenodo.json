@@ -1,0 +1,26 @@
+{
+  "title": "Analysis code for Regional Fat Distribution and Advanced Cardiovascular–Kidney–Metabolic Syndrome in Chinese and US Adults",
+  "description": "Research software for regional adiposity and concurrent cardiovascular–kidney–metabolic stages. This version incorporates the corrected NHANES cohort construction and 2017–2018 alcohol classification. Chinese participant data are restricted. See the reproducibility documentation for execution scope.",
+  "creators": [
+    {
+      "name": "Yang, Hua"
+    }
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "version": "1.1.0",
+  "keywords": [
+    "regional adiposity",
+    "cardiovascular-kidney-metabolic syndrome",
+    "NHANES",
+    "principal component analysis"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/HuaYang-CN/CKM-regional-fat-distribution",
+      "scheme": "url",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ]
+}

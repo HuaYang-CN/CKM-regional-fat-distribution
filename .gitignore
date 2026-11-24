@@ -30,3 +30,16 @@ results/
 *.sas7bdat
 *.xpt
 *.zip
+
+# Local reproduction caches, outputs and derivative figures
+outputs/
+work/
+*.RData
+*.Rhistory
+*.XPT
+*.pdf
+*.png
+*.tiff
+*.docx
+*.log
+
