@@ -1,0 +1,229 @@
+{
+  "S9": [
+    [
+      [
+        "Analysis",
+        "Effect",
+        "OR (95% CI)",
+        "p value"
+      ],
+      [
+        "NHANES-derived PCA: primary Stages 3–4 vs Stages 0–2",
+        "PC1",
+        "1.17 (0.75–1.82)",
+        "0.472"
+      ],
+      [
+        "NHANES-derived PCA: primary Stages 3–4 vs Stages 0–2",
+        "PC2",
+        "0.54 (0.43–0.69)",
+        "<0.001"
+      ],
+      [
+        "Fixed Chinese-loading vector transferred to NHANES",
+        "PC1",
+        "1.48 (0.97–2.25)",
+        "0.068"
+      ],
+      [
+        "Fixed Chinese-loading vector transferred to NHANES",
+        "PC2",
+        "0.56 (0.44–0.72)",
+        "<0.001"
+      ],
+      [
+        "Fixed Chinese-loading vector: Stages 3–4 vs stage 2",
+        "PC1",
+        "1.32 (0.84–2.06)",
+        "0.223"
+      ],
+      [
+        "Fixed Chinese-loading vector: Stages 3–4 vs stage 2",
+        "PC2",
+        "0.75 (0.58–0.97)",
+        "0.030"
+      ]
+    ]
+  ],
+  "S10": [
+    [
+      [
+        "Cohort",
+        "Score definition",
+        "PC",
+        "Primary OR (95% CI)",
+        "Age-adjusted OR (95% CI)",
+        "Age-adjusted p",
+        "Attenuation (%)"
+      ],
+      [
+        "Chinese derivation cohort",
+        "China-derived PCA",
+        "PC1",
+        "1.14 (1.08–1.20)",
+        "1.17 (1.10–1.24)",
+        "<0.001",
+        "-16.5"
+      ],
+      [
+        "Chinese derivation cohort",
+        "China-derived PCA",
+        "PC2",
+        "0.57 (0.40–0.80)",
+        "0.49 (0.33–0.73)",
+        "<0.001",
+        "-24.6"
+      ],
+      [
+        "NHANES 2011–2018",
+        "NHANES-derived PCA",
+        "PC1",
+        "1.17 (0.75–1.82)",
+        "1.16 (0.73–1.85)",
+        "0.521",
+        "5.9"
+      ],
+      [
+        "NHANES 2011–2018",
+        "NHANES-derived PCA",
+        "PC2",
+        "0.54 (0.43–0.69)",
+        "0.59 (0.46–0.77)",
+        "<0.001",
+        "14.0"
+      ],
+      [
+        "NHANES 2011–2018",
+        "Fixed Chinese-loading",
+        "PC1",
+        "1.48 (0.97–2.25)",
+        "1.44 (0.93–2.24)",
+        "0.099",
+        "6.2"
+      ],
+      [
+        "NHANES 2011–2018",
+        "Fixed Chinese-loading",
+        "PC2",
+        "0.56 (0.44–0.72)",
+        "0.63 (0.49–0.83)",
+        "0.001",
+        "20.8"
+      ]
+    ]
+  ],
+  "S11": [
+    [
+      [
+        "Analysis",
+        "OR (95% CI)",
+        "p value"
+      ],
+      [
+        "Fixed China loading: same alcohol-complete sample, no alcohol adjustment",
+        "0.52 (0.38–0.71)",
+        "<0.001"
+      ],
+      [
+        "Fixed China loading: alcohol-adjusted",
+        "0.51 (0.37–0.70)",
+        "<0.001"
+      ],
+      [
+        "NHANES-derived PC2: same alcohol-complete sample, no alcohol adjustment",
+        "0.51 (0.38–0.69)",
+        "<0.001"
+      ],
+      [
+        "NHANES-derived PC2: alcohol-adjusted",
+        "0.51 (0.37–0.68)",
+        "<0.001"
+      ],
+      [
+        "Fixed China loading: alcohol-adjusted stages 3–4 vs stage 2",
+        "0.67 (0.49–0.93)",
+        "0.018"
+      ]
+    ]
+  ],
+  "S13": [
+    [
+      [
+        "Analysis",
+        "N",
+        "Stages 3–4, n",
+        "OR (95% CI)",
+        "p value",
+        "Included cycles"
+      ],
+      [
+        "All cycles",
+        "2688",
+        "179",
+        "0.56 (0.44–0.72)",
+        "<0.001",
+        "2011-2012; 2013-2014; 2015-2016; 2017-2018"
+      ],
+      [
+        "Exclude 2011-2012",
+        "2003",
+        "132",
+        "0.60 (0.46–0.78)",
+        "<0.001",
+        "2013-2014; 2015-2016; 2017-2018"
+      ],
+      [
+        "Exclude 2013-2014",
+        "1910",
+        "138",
+        "0.58 (0.43–0.78)",
+        "<0.001",
+        "2011-2012; 2015-2016; 2017-2018"
+      ],
+      [
+        "Exclude 2015-2016",
+        "2018",
+        "130",
+        "0.49 (0.36–0.67)",
+        "<0.001",
+        "2011-2012; 2013-2014; 2017-2018"
+      ],
+      [
+        "Exclude 2017-2018",
+        "2133",
+        "137",
+        "0.59 (0.45–0.77)",
+        "<0.001",
+        "2011-2012; 2013-2014; 2015-2016"
+      ]
+    ]
+  ],
+  "S14": [
+    [
+      [
+        "Cohort",
+        "Score definition",
+        "Interaction OR per 10 years (95% CI)",
+        "p value"
+      ],
+      [
+        "Chinese derivation cohort",
+        "China-derived PCA",
+        "0.97 (0.77–1.23)",
+        "0.821"
+      ],
+      [
+        "NHANES 2011–2018",
+        "NHANES-derived PCA",
+        "1.17 (0.89–1.54)",
+        "0.263"
+      ],
+      [
+        "NHANES 2011–2018",
+        "Fixed Chinese-loading",
+        "1.07 (0.80–1.42)",
+        "0.659"
+      ]
+    ]
+  ]
+}

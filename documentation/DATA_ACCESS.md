@@ -1,0 +1,7 @@
+# Data access
+
+The public workflow reads the US National Health and Nutrition Examination Survey (NHANES) 2011–2018 public-use releases. Obtain the component files from the [CDC Continuous NHANES portal](https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx). The release does not redistribute individual survey records. File names, cycles and checksums identify the inputs used for validation. Keep downloads and derived files outside the source tree.
+
+The Chinese cross-sectional and repeated-measures cohorts are controlled clinical data. Qualified academic or clinical researchers may send a scientifically justified proposal to the corresponding author, Jiajun Zhao (jjzhao@sdu.edu.cn), specifying institutional affiliation, research question, requested variables, analysis plan and intended use. Access is subject to ethics and institutional requirements and any required data-use agreement. Only the deidentified subset approved for that purpose can be considered. Do not request identifiable clinical source records or redistribute received data.
+
+The fixed-loading definition is an aggregate model parameter. It can be applied to the public NHANES inputs without accessing the Chinese clinical records. Re-estimating those loadings, fitting the Chinese models, computing individual changes or reconstructing individual figures from clinical observations requires authorized data. Chinese scripts start from the retained filtered inputs. The upstream Chinese source-population construction was not retained.

@@ -1,6 +1,11 @@
 # ==============================================================================
 # 02_CKM_tables_figures_highimpact_v19_reconciled.R
 # Publication tables + figures ONLY. Does not refit primary statistical models.
+# R2 presentation-only corrections (2026-10-20): preserve the complete main-figure
+# P column and change-direction legend; use current inside-legend syntax;
+# format Supplementary Figure S3 P inequalities without a redundant equals sign.
+# R3 presentation-only correction (2026-10-20): place the Figure 3D direction
+# legend below its plotting panel so that no scatter points are covered.
 # v7 dense/classical main-figure redesign:
 #   * restrained color-blind-safe clinical palette;
 #   * unified forest-plot scaffold across Figures 2 and 4;
@@ -9,7 +14,8 @@
 #   * loading-agreement plot for cross-platform replication;
 #   * reduced visual clutter and stronger direct effect-size emphasis.
 # ==============================================================================
-# Run after 01_CKM_refactored_analysis.R. You can repeatedly edit/run this file
+# Run after Stage 01 and Stage 03 (which supplies the reconciled S8 intervals).
+# You can repeatedly edit/run this file
 # to optimize visual style without touching the locked analysis objects.
 # ==============================================================================
 
@@ -40,11 +46,8 @@ get_current_script_dir <- function() {
 
 SCRIPT_DIR <- get_current_script_dir()
 CONFIG_NAME <- "00_CKM_refactored_config.R"
-CONFIG_CANDIDATES <- unique(c(
-  file.path(SCRIPT_DIR, CONFIG_NAME),
-  file.path(getwd(), CONFIG_NAME),
-  file.path(Sys.getenv("CKM_REPO_ROOT", unset = getwd()), "R", CONFIG_NAME)
-))
+CONFIG_CANDIDATES <- file.path(SCRIPT_DIR, CONFIG_NAME)
+
 existing_config <- CONFIG_CANDIDATES[file.exists(CONFIG_CANDIDATES)]
 if (!length(existing_config)) {
   stop(
@@ -83,6 +86,42 @@ if (is.null(res$supplementary)) {
   )
 }
 sup <- res$supplementary
+
+# IJO submission reconciliation (2026-10-20): use the S8 bootstrap intervals
+# for the 12 S4 reclassification estimates. S8 also supplies the matching P values.
+# The locked master, point estimates and all other metrics remain unchanged.
+reconcile_s4_nri_ci <- function(nri, s8, tolerance = 1e-10) {
+  refs <- c("Baseline", "BMI", "VFA")
+  metric_map <- c(NRI_Event = "NRI_event", NRI_Nonevent = "NRI_nonevent",
+                  Continuous_NRI = "Continuous_NRI", IDI = "IDI")
+  if (!is.data.frame(nri) ||
+      !all(c("Reference", "Metric", "Estimate", "Lower", "Upper") %in% names(nri)) ||
+      !is.data.frame(s8) ||
+      !all(c("Comparison", "Metric", "Estimate", "CI_Lower", "CI_Upper", "Bootstrap_P") %in% names(s8))) {
+    stop("S4/S8 reconciliation: required source fields are missing.", call. = FALSE)
+  }
+  expected <- as.vector(outer(refs, unname(metric_map), paste, sep = "|"))
+  nri_keys <- paste(as.character(nri$Reference), as.character(nri$Metric), sep = "|")
+  s8_refs <- refs[match(as.character(s8$Comparison), paste0("FDP vs ", refs))]
+  s8_metrics <- unname(metric_map[as.character(s8$Metric)])
+  s8_keys <- paste(s8_refs, s8_metrics, sep = "|")
+  if (nrow(nri) != 12L || nrow(s8) != 12L ||
+      anyDuplicated(nri_keys) || anyDuplicated(s8_keys) ||
+      !setequal(nri_keys, expected) || !setequal(s8_keys, expected)) {
+    stop("S4/S8 reconciliation: expected one row for each of 12 reference/metric keys.", call. = FALSE)
+  }
+  k <- match(nri_keys, s8_keys)
+  values <- c(nri$Estimate, s8$Estimate[k], s8$CI_Lower[k], s8$CI_Upper[k], s8$Bootstrap_P[k])
+  if (!is.numeric(values) || any(!is.finite(values)) ||
+      any(abs(nri$Estimate - s8$Estimate[k]) > tolerance) ||
+      any(s8$CI_Lower[k] > s8$CI_Upper[k]) ||
+      any(s8$Bootstrap_P[k] < 0 | s8$Bootstrap_P[k] > 1)) {
+    stop("S4/S8 reconciliation: point estimates, CI limits or bootstrap P values are invalid.", call. = FALSE)
+  }
+  nri$Lower <- s8$CI_Lower[k]
+  nri$Upper <- s8$CI_Upper[k]
+  nri
+}
 
 # ==============================================================================
 # 1. Publication style
@@ -756,7 +795,8 @@ p3C <- ggplot2::ggplot() +
   ggplot2::labs(tag = "C", x = "PC1 score", y = "PC2 score") +
   pub_theme() +
   ggplot2::theme(
-    legend.position = c(.72, .16),
+    legend.position = "inside",
+    legend.position.inside = c(.72, .16),
     legend.justification = c(0, 0),
     legend.background = ggplot2::element_rect(fill = scales::alpha("white", .78), color = NA),
     legend.key.height = grid::unit(.30, "cm"),
@@ -783,10 +823,12 @@ p3D <- ggplot2::ggplot(
     y = "ΔPC2 (follow-up - baseline)"
   ) +
   pub_theme() +
+  ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE)) +
   ggplot2::theme(
-    legend.position = c(.72, .14),
-    legend.justification = c(0, 0),
-    legend.background = ggplot2::element_rect(fill = scales::alpha("white", .78), color = NA),
+    legend.position = "bottom",
+    legend.direction = "horizontal",
+    legend.justification = "center",
+    legend.background = ggplot2::element_blank(),
     legend.key.height = grid::unit(.30, "cm"),
     legend.key.width = grid::unit(.48, "cm"),
     legend.title = ggplot2::element_blank(),
@@ -905,7 +947,7 @@ p4B <- forest_panel(
   axis_title = "Odds ratio per 1 weighted SD",
   label_header = "Analysis",
   numeric_header = "OR (95% CI)      P",
-  label_width = 1.28, plot_width = 2.26, text_width = 1.04,
+  label_width = 1.28, plot_width = 2.26, text_width = 1.50,
   wrap_width = 18,
   log_scale = FALSE
 )
@@ -925,7 +967,7 @@ p4C <- forest_panel(
   axis_title = "Odds ratio per 1 weighted SD",
   label_header = "Leave-one-cycle-out",
   numeric_header = "OR (95% CI)      P",
-  label_width = 1.28, plot_width = 2.26, text_width = 1.04,
+  label_width = 1.28, plot_width = 2.26, text_width = 1.50,
   wrap_width = 18,
   log_scale = FALSE
 )
@@ -1102,8 +1144,11 @@ if (!is.null(sup$ml)) {
   cp <- sup$ml$comparator_performance
   cp$Model <- factor(cp$Model, levels = c("Baseline", "BMI", "VFA", "FDP"))
   diffs <- sup$ml$comparator_auc_differences
+  delta_p_labels <- vapply(diffs$P, format_p, character(1))
+  delta_p_labels <- ifelse(grepl("^[<>]", delta_p_labels),
+                           paste0("P ", delta_p_labels), paste0("P = ", delta_p_labels))
   delta_lab <- setNames(
-    paste0("Δ=", sprintf("%.3f", diffs$Delta_AUROC_FDP_minus_ref), "; P=", vapply(diffs$P, format_p, character(1))),
+    paste0("Δ=", sprintf("%.3f", diffs$Delta_AUROC_FDP_minus_ref), "; ", delta_p_labels),
     diffs$Reference
   )
   cp$DeltaText <- ifelse(as.character(cp$Model) == "FDP", "Reference",
@@ -1180,6 +1225,18 @@ if (!is.null(sup$ml)) {
   # ---- Supplementary Figure S4: reclassification + calibration ---------------
   nr <- sup$ml$nri_bootstrap
   if (!is.null(nr)) {
+    s8_file <- file.path(DIR_TABLE, "Supplementary_Tables_v4", "individual_csv",
+                         "Supplementary_Table_S8.csv")
+    if (!file.exists(s8_file)) {
+      stop("Supplementary Table S8 is required to draw Figure S4. Run Stage 03 before Stage 02:\n",
+           s8_file, call. = FALSE)
+    }
+    s8_source <- utils::read.csv(s8_file, check.names = FALSE,
+                                  stringsAsFactors = FALSE, fileEncoding = "UTF-8")
+    nr <- reconcile_s4_nri_ci(nr, s8_source)
+    # Keep the exported S4 figure-source sheet identical to the plotted intervals.
+    # This updates the in-memory export copy only; the master RDS is never written.
+    sup$ml$nri_bootstrap <- nr
     ref_levels <- c("Baseline", "BMI", "VFA")
     nr$Reference <- factor(nr$Reference, levels = ref_levels)
 

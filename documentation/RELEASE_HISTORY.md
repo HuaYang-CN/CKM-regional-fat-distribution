@@ -1,10 +1,5 @@
 # Release history
 
-## 1.0.2
-Final Stage10B local release. Corrects the supplementary-output directory in the analysis manifest to the script's actual historical Supplementary_Tables_v4/individual_csv path, and replaces two obsolete documentation links in construction-script comments. No scientific expression changed. Hua Yang is the author-confirmed software creator. Public release identifiers remain pending until the new version is actually published.
-
-## 1.0.1
-First Stage10B local preparation commit and annotated tag. The 24-file ZIP is preserved in the private Stage10B archive directory, but is superseded by 1.0.2. It was never pushed or published. Its tag is retained, not moved or overwritten.
-
-## 1.0.0
-Historical public GitHub/Zenodo release dated 2026-08-30. Its public archive is a different, earlier package; the old DOI does not identify the Stage10B candidate. Existing published history and tag are preserved.
+- v1.1.0 contains the corrected NHANES reconstruction and alcohol harmonization used in the Nutrients manuscript.
+- Earlier GitHub releases include v1.0.0 and v1.0.2. v1.0.2 was released on 6 October 2026. Its tagged commit is 16bffd52c6c5f70423db1e8752c5f899417253d1. [Published v1.0.2](https://doi.org/10.5281/zenodo.23183495)
+- The upstream history includes a local v1.0.1 preparation commit. The public tag list contains no v1.0.1.

@@ -1,3 +1,5 @@
+# Archived v1.0.2 source; use the tagged release to reproduce that historical workflow.
+stop("Superseded for the current manuscript. See RUN_ANALYSES.R and the current manuscript mapping.", call. = FALSE)
 # Stage 7.5 final figure and supplementary-display production
 #
 # This script redraws locked displays only. It does not refit inferential models.

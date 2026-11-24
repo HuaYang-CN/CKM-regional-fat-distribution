@@ -2,7 +2,7 @@
 # 00_CKM_refactored_config.R
 # Refactored configuration for the regional fat-distribution / CKM project
 # ==============================================================================
-# Edit ONLY the four input-path settings below if your folders change.
+# Set the documented path environment variables when using authorized inputs.
 # Analysis and plotting scripts source this file and never search legacy folders.
 # This deliberate design prevents an older file from being selected silently.
 # ==============================================================================
@@ -10,14 +10,22 @@
 options(stringsAsFactors = FALSE, scipen = 999)
 options(survey.lonely.psu = "adjust", survey.adjust.domain.lonely = TRUE)
 
-# ---- User paths ---------------------------------------------------------------
-# Run from the repository root. Override only these paths when authorized.
-REPO_ROOT <- normalizePath(Sys.getenv("CKM_REPO_ROOT", unset = getwd()), winslash = "/", mustWork = TRUE)
-OUTPUT_ROOT <- Sys.getenv("CKM_OUTPUT_ROOT", unset = file.path(REPO_ROOT, "results"))
-CHINA_CROSS_FILE <- Sys.getenv("CKM_CHINA_CROSS_FILE", unset = file.path(REPO_ROOT, "restricted_data", "china", "cross_filtered.xlsx"))
-CHINA_LONG_FILE <- Sys.getenv("CKM_CHINA_LONG_FILE", unset = file.path(REPO_ROOT, "restricted_data", "china", "suifang.xlsx"))
-NHANES_EXTERNAL_READY_FILE <- Sys.getenv("CKM_NHANES_READY_FILE", unset = file.path(REPO_ROOT, "data", "public", "nhanes", "data_processed", "NHANES_2011_2018_external_validation_ready_REVISED.rds"))
-NHANES_RAW_DIR <- Sys.getenv("CKM_NHANES_RAW_DIR", unset = file.path(REPO_ROOT, "data", "public", "nhanes", "data_raw"))
+# ---- Portable paths ----------------------------------------------------------
+# The stage scripts set CONFIG_FILE to this file before sourcing it.
+# Optional environment overrides accept absolute paths without shell interpolation.
+CKM_CODE_ROOT <- normalizePath(
+  Sys.getenv("CKM_CODE_ROOT", unset = file.path(dirname(CONFIG_FILE), "..")),
+  winslash = "/", mustWork = TRUE
+)
+OUTPUT_ROOT <- Sys.getenv("CKM_OUTPUT_ROOT", unset = file.path(CKM_CODE_ROOT, "results"))
+CHINA_CROSS_FILE <- Sys.getenv("CKM_CHINA_CROSS_FILE",
+  unset = file.path(CKM_CODE_ROOT, "restricted_data", "cross_filtered.xlsx"))
+CHINA_LONG_FILE <- Sys.getenv("CKM_CHINA_LONG_FILE",
+  unset = file.path(CKM_CODE_ROOT, "restricted_data", "suifang.xlsx"))
+NHANES_EXTERNAL_READY_FILE <- Sys.getenv("CKM_NHANES_READY_FILE",
+  unset = file.path(CKM_CODE_ROOT, "data", "public", "NHANES_2011_2018_external_validation_ready_REVISED.rds"))
+NHANES_RAW_DIR <- Sys.getenv("CKM_NHANES_RAW_DIR",
+  unset = file.path(CKM_CODE_ROOT, "data", "public", "raw_official_ALQ"))
 
 # IMPORTANT: the refactored analysis begins from the locked staged NHANES RDS.
 # For end-to-end reproducibility, archive the upstream script that creates
@@ -25,7 +33,7 @@ NHANES_RAW_DIR <- Sys.getenv("CKM_NHANES_RAW_DIR", unset = file.path(REPO_ROOT, 
 # pipeline, and retain the input MD5 manifest written by Stage 01.
 
 # ---- Refactored output tree ---------------------------------------------------
-# Save every analysis/table/figure/audit output inside CKM第五次分析.
+# Save every newly generated analysis/table/figure/audit output inside OUTPUT_ROOT.
 REFAC_ROOT <- OUTPUT_ROOT
 DIR_ANALYSIS <- file.path(REFAC_ROOT, "01_locked_analysis_objects")
 DIR_TIDY     <- file.path(REFAC_ROOT, "02_tidy_results")
@@ -68,8 +76,8 @@ EXPECTED_DERIVATION_N <- 955L
 EXPECTED_LONGITUDINAL_N <- 100L
 EXPECTED_PROGRESSOR_N <- 37L
 EXPECTED_STABLE_SEVERE_N <- 63L
-EXPECTED_NHANES_N <- 2254L
-EXPECTED_NHANES_ADVANCED <- 157L
+EXPECTED_NHANES_N <- 2688L
+EXPECTED_NHANES_ADVANCED <- 179L
 STRICT_COUNTS <- TRUE
 
 # ---- Reproducibility -----------------------------------------------------------
@@ -115,6 +123,18 @@ assert_columns <- function(dat, vars, label = "data") {
   miss <- setdiff(vars, names(dat))
   if (length(miss)) stop(label, " missing columns: ", paste(miss, collapse = ", "), call. = FALSE)
   invisible(TRUE)
+}
+
+# The 2017–2018 questionnaire skips ALQ121 after a lifetime abstention response.
+classify_alq_2017_18 <- function(x, label) {
+  assert_columns(x, c("SEQN", "ALQ111", "ALQ121"), label)
+  frequency <- as.numeric(x$ALQ121)
+  dplyr::case_when(
+    frequency == 0 ~ FALSE,
+    frequency >= 1 & frequency <= 10 ~ TRUE,
+    is.na(frequency) & as.numeric(x$ALQ111) == 2 ~ FALSE,
+    TRUE ~ NA
+  )
 }
 
 assert_count <- function(observed, expected, label) {

@@ -54,11 +54,8 @@ get_current_script_dir <- function() {
 
 SCRIPT_DIR <- get_current_script_dir()
 CONFIG_NAME <- "00_CKM_refactored_config.R"
-CONFIG_CANDIDATES <- unique(c(
-  file.path(SCRIPT_DIR, CONFIG_NAME),
-  file.path(getwd(), CONFIG_NAME),
-  file.path(Sys.getenv("CKM_REPO_ROOT", unset = getwd()), "R", CONFIG_NAME)
-))
+CONFIG_CANDIDATES <- file.path(SCRIPT_DIR, CONFIG_NAME)
+
 existing_config <- CONFIG_CANDIDATES[file.exists(CONFIG_CANDIDATES)]
 if (!length(existing_config)) {
   stop(
@@ -286,7 +283,11 @@ china_or <- rbind(
 
 # Restricted cubic splines: 3 knots at 10th, 50th, 90th percentiles.
 dd <- rms::datadist(assoc); old_dd <- options(datadist = "dd")
-on.exit(options(old_dd), add = TRUE)
+# R1: this is sourced top-level code, not a function body. A top-level
+# on.exit() restores the option at the end of source()'s current eval(),
+# before lrm/Predict run. Restore explicitly after this entire RCS block;
+# the launcher restores all original options if an error interrupts it.
+message("China RCS: datadist active; fitting the original PC1 and PC2 spline models.")
 k1 <- as.numeric(stats::quantile(assoc$PC1_Score, c(.10, .50, .90), names = FALSE))
 k2 <- as.numeric(stats::quantile(assoc$PC2_Score, c(.10, .50, .90), names = FALSE))
 fit_rcs_pc1 <- rms::lrm(severe ~ rms::rcs(PC1_Score, k1) + PC2_Score + Sex_f + Smoke_f + Alcohol_f,
@@ -313,6 +314,8 @@ extract_rcs_p <- function(fit, varname) {
 }
 rcs_p <- rbind(PC1 = extract_rcs_p(fit_rcs_pc1, "PC1_Score"),
                PC2 = extract_rcs_p(fit_rcs_pc2, "PC2_Score"))
+options(old_dd)
+message("China RCS: both 250-point curves and P values completed; datadist restored.")
 
 age_sensitivity_china <- NULL
 if (CHINA_AGE_VAR %in% names(assoc)) {
@@ -607,12 +610,7 @@ if (isTRUE(RUN_NHANES_ALCOHOL)) {
           TRUE ~ NA
         )
       } else {
-        assert_columns(z, c("SEQN", "ALQ121"), basename(alq_info$file[i]))
-        use <- dplyr::case_when(
-          as.numeric(z$ALQ121) == 0 ~ FALSE,
-          as.numeric(z$ALQ121) >= 1 & as.numeric(z$ALQ121) <= 10 ~ TRUE,
-          TRUE ~ NA
-        )
+        use <- classify_alq_2017_18(z, basename(alq_info$file[i]))
       }
       data.frame(SEQN = as.numeric(z$SEQN), cycle = alq_info$cycle[i], alcohol_past12m = use)
     })

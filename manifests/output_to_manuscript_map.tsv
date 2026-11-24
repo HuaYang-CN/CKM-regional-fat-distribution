@@ -1,0 +1,46 @@
+manuscript_object	caption_or_short_title	earlier_analytical_identifier	analysis_manifest_ids	input_scope	qualification
+Figure 1	Participant selection and analytical framework	Supplementary Figure S1 / Supplementary Figure S13 / Supplementary Figure S14	A,B,E	mixed	See analysis_manifest.tsv for methods and input restrictions.
+Figure 2	Chinese regional adiposity structure and concurrent CKM-stage associations	Main Figure 1	F	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Figure 3	External cross-sectional replication in NHANES	Main Figure 3	G,H,I,J,K	public plus published Chinese loading parameters	Conditional on fixed Chinese loadings. Re-estimation of those loadings requires the restricted derivation input. Input availability does not imply a full plotting/bootstrap rerun.
+Figure 4	Longitudinal changes in PC2 accompanying CKM stage progression	Supplementary Figure S17	M	restricted	Individual Chinese trajectories; cannot publish underlying patient-level plot objects.
+Table 1	Characteristics of the Chinese derivation cohort by concurrent CKM stage.	Main table of Chinese cross-sectional characteristics	A	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table 2	Characteristics of the NHANES external cross-sectional validation cohort, 2011–2018 (n = 2688).	Table S13	B,D,E,K	public	See analysis_manifest.tsv for methods and input restrictions.
+Figure S1	Cross-population similarity of adiposity loadings	Main Figure 2	G	public plus published Chinese loading parameters	Conditional on fixed Chinese loadings. Re-estimation of those loadings requires the restricted derivation input. Input availability does not imply a full plotting/bootstrap rerun.
+Figure S2	Conditional stability of NHANES loadings	Supplementary Figure S9	G	public plus published Chinese loading parameters	Conditional on fixed Chinese loadings. Re-estimation of those loadings requires the restricted derivation input. Input availability does not imply a full plotting/bootstrap rerun.
+Figure S3	NHANES-derived associations and stage-specific PC2	Supplementary Figure S11 / Supplementary Figure S16	G,H,J	public	See analysis_manifest.tsv for methods and input restrictions.
+Figure S4	Age and alcohol sensitivity analyses	Supplementary Figure S11 / Supplementary Figure S12	I,K	mixed	See analysis_manifest.tsv for methods and input restrictions.
+Figure S5	Cycle sensitivity and age interaction	Supplementary Figure S12 / Supplementary Figure S16	I,L	mixed	See analysis_manifest.tsv for methods and input restrictions.
+Figure S6	Restricted cubic spline associations in the Chinese cohort	Supplementary Figure S15	N	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Figure S7	Nested cross-validation benchmark of six algorithms	Supplementary Figure S2	O	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Figure S8	Internal discrimination and Brier scores	Supplementary Figure S3	O	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Figure S9	Reclassification analyses	Supplementary Figure S4	O	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Figure S10	Calibration and decision-curve analyses	Supplementary Figure S3 / Supplementary Figure S4	O,P	restricted for aggregate extraction; aggregate-only for rendering	Final layout uses scripts/render_s10.py and scripts/export_s10_aggregates.R; older panel layout differs.
+Figure S11	SHAP feature importance and dependence	Supplementary Figure S6 / Supplementary Figure S7	O	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Figure S12	Apparent model performance in NHANES	Supplementary Figure S10	O	public	See analysis_manifest.tsv for methods and input restrictions.
+Table S1	CKM staging criteria and operational definitions	Table S1	C	mixed	See analysis_manifest.tsv for methods and input restrictions.
+Table S2	PC1 and PC2 loadings in the Chinese derivation cohort	Table S2	F	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table S3	Variance explained by principal components in the Chinese derivation cohort	Table S3	F	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table S4	Crude and multivariable-adjusted logistic regression results	Table S4	F	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table S5	Chinese and NHANES PCA loadings	Table S15	E,G	public plus published Chinese loading parameters	Conditional on fixed Chinese loadings. Re-estimation of those loadings requires the restricted derivation input. Input availability does not imply a full plotting/bootstrap rerun.
+Table S6	Loading-vector similarity between the Chinese and NHANES cohorts	Table S16	G	public plus published Chinese loading parameters	Conditional on fixed Chinese loadings. Re-estimation of those loadings requires the restricted derivation input. Input availability does not imply a full plotting/bootstrap rerun.
+Table S7	Conditional bootstrap congruence of PCA loading vectors	Table S17	G	public plus published Chinese loading parameters	Conditional on fixed Chinese loadings. Re-estimation of those loadings requires the restricted derivation input. Input availability does not imply a full plotting/bootstrap rerun.
+Table S8	Variance explained by principal components in NHANES	Table S18	G	public	See analysis_manifest.tsv for methods and input restrictions.
+Table S9	Survey-weighted NHANES associations and the stage 2–4 comparison	Table S19	H,J	public	See analysis_manifest.tsv for methods and input restrictions.
+Table S10	Primary and age-adjusted associations	Table S24	I	mixed	See analysis_manifest.tsv for methods and input restrictions.
+Table S11	Alcohol sensitivity analyses of PC2 associations	Table S20	K	public	See analysis_manifest.tsv for methods and input restrictions.
+Table S12	Alcohol harmonization by NHANES cycle	Table S14	K	public	See analysis_manifest.tsv for methods and input restrictions.
+Table S13	Leave-one-cycle-out robustness of the fixed China-loading PC2 association	Table S22	L	public	See analysis_manifest.tsv for methods and input restrictions.
+Table S14	Exploratory PC2-by-age interaction analyses	Table S25	I	mixed	See analysis_manifest.tsv for methods and input restrictions.
+Table S15	PC2-by-sex interaction in NHANES	Table S21	H	public	See analysis_manifest.tsv for methods and input restrictions.
+Table S16	Age-sensitivity sample audit and NHANES complete-case selection	Table S26	D	mixed	A includes cross-cohort analytic counts, B reports public NHANES selection.
+Table S17	Baseline characteristics of the repeated-measures cohort by transition group	Table S10	M	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table S18	Within-progressor primary and sensitivity analyses	Table S11	M	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table S19	Between-group comparison of longitudinal changes	Table S12	M	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table S20	Nested cross-validation performance of six candidate algorithms	Table S5	O	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table S21	Inner-cross-validation algorithm selection frequency	Table S6	O	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table S22	GBM comparator-model performance	Table S7	O	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table S23	Continuous NRI, IDI, event NRI, and non-event NRI	Table S8	O	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table S24	Calibration metrics for comparator models	Table S9	O	restricted	See analysis_manifest.tsv for methods and input restrictions.
+Table S25	Apparent survey-weighted AUROC and Brier-score point estimates for comparator models in NHANES	Table S23	O	public	See analysis_manifest.tsv for methods and input restrictions.
+Table S26	Specifications for secondary model-performance analyses	Table S27	O	mixed	Model specifications from archived publication compilation.
+Table S27	Complete test statistics	Table S28	H,I,J,K,M,N,O	mixed	92 rows. Five updated C07–C11 from corrected alcohol refits; archived analytical S28 for remaining rows.

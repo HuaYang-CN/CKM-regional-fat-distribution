@@ -1,3 +1,5 @@
+# Archived v1.0.2 source; use the tagged release to reproduce that historical workflow.
+stop("Superseded for the current manuscript. See RUN_ANALYSES.R and the current manuscript mapping.", call. = FALSE)
 # Rebuild all twenty approved panels and five composites from frozen displays.
 # Run from the project root:
 # Rscript 09_analysis_code/Stage10D_figure_redesign/Stage10D_Final_Main_Figures_v3.R

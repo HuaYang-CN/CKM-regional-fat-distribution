@@ -1,9 +1,16 @@
-# Public workflow and final implementation
+# Workflow boundaries
 
-07a -> 07b is the retained public NHANES acquisition/construction chain, supported by the Stage9A provenance records and the retained input MD5 manifest. The output of 07b is the NHANES input consumed by the final method-locked analysis. A new download/run was not performed during release preparation, so current source availability and numerical byte-equivalence are not certified by this release check.
+The independent public entry point concerns the US NHANES component. It applies a Chinese loading matrix to standardized survey inputs. It does not derive those coefficients anew. Successful US execution therefore tests transport and association estimates given the supplied aggregate parameters.
 
-The older prepared split scripts (01-06, 08-11), run_all.R and a missing graphical-abstract entry are excluded. They predate the final refactored method lock; equivalence to the retained final implementation has not been established. Do not use them as a substitute for final results.
+The Chinese derivation included 955 participants. Its analysis inputs are controlled. The 100-person repeated-measures cohort was selected according to observed stage transitions and had no comparison group remaining in stage 2 at both visits. Raw clinical source-population construction, the individual staging review and clinical data extraction cannot be reconstructed from this release. Approved researchers need the retained restricted clinical inputs to rerun downstream analyses.
 
-The final monolithic analysis executes restricted China derivation/repeated-measures sections before NHANES and uses the locked Chinese PCA object for fixed-loading transport. This release therefore supports independent public acquisition/construction, but does not expose an independently executable final NHANES-only analysis entry point. Obtaining public NHANES data alone is insufficient to execute the entire retained final script. Creating such an entry point or distributing a reviewed aggregate-only PCA reference is future work; neither was introduced by altering scientific logic in Stage10B. NHANES-native analyses are present in section 4 of the retained script, but users should not infer that skipping earlier sections is validated.
+Clinical nested cross-validation, reclassification, DCA, SHAP and individual trajectories require restricted inputs or authorized intermediate objects. Figure-numbering manifests are provenance, not computed evidence of model performance. Historical analysis or supplementary-table numbers in the R code can differ from the manuscript. Table S27 is a compiled statistical inventory; a successful public survey run does not regenerate every clinical row.
 
-No scientific analyses or model fits were run. Final figures and tables remain frozen outside the repository. Script output labels are historical; README maps them to final manuscript roles. No package versions are invented or inserted into sessionInfo records. Future package installation does not recreate the historical environment automatically.
+The final S10 plot can be rendered with Python (reportlab, pypdfium2 and Pillow) from approved aggregate exports. Supply two licensed font files for the regular and bold faces. Example commands, with all outputs going to new directories:
+
+~~~sh
+Rscript scripts/export_s10_aggregates.R /authorized/master.rds /work/new-s10-aggregates
+python scripts/render_s10.py /work/new-s10-aggregates /work/new-s10-figure /fonts/regular.ttf /fonts/bold.ttf
+~~~
+
+Historic v1.0.2 public preparation scripts are preserved for provenance as marked in the analysis manifest. Use the current public entry point for manuscript comparisons. See [execution coverage](REPRODUCIBILITY.md) for the actual tests performed in this candidate.

@@ -1,3 +1,5 @@
+# Archived v1.0.2 source; use the tagged release to reproduce that historical workflow.
+stop("Superseded for the current manuscript. See scripts/public_nhanes.R.", call. = FALSE)
 # =============================================================================
 # PUBLIC RELEASE SCRIPT: NHANES 2011-2018 download, harmonization and initial staging
 # Repository paths are relative and no participant-level data are bundled.

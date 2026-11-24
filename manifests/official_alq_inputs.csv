@@ -1,0 +1,5 @@
+dataset,md5,bytes,n_rows,seqn_min,seqn_max,required_variable,sha256,source_url,retrieved_utc
+ALQ_G,5221ae5eea6358eecf572fb0f3370592,451360,5615,62161,71915,ALQ120Q,5f06ba3506f9d69cedffa0380ad0cecbc15df2d6d9b7a3644ac3e2678aaac5e5,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2011/DataFiles/ALQ_G.xpt,2026-10-20T01:04:39.535384+00:00
+ALQ_H,a95ec1cb76dfe3fd778e957c04fce4b5,476080,5924,73557,83729,ALQ120Q,174e4dd21e05f81df8bc786a6e76253a2cdc07503cd7cde4c7dd1c1b9d3e3098,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2013/DataFiles/ALQ_H.xpt,2026-10-20T01:04:39.579550+00:00
+ALQ_I,fc4804178f3238307880962f2909d8f9,460960,5735,83732,93702,ALQ120Q,ed445c40ec3f3f993f78321f86e513340d4f131708c7624d88803bde3909102d,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2015/DataFiles/ALQ_I.xpt,2026-10-20T01:04:39.366941+00:00
+ALQ_J,042926fb111908aaf08e0a0afd496fda,444800,5533,93705,102956,ALQ111;ALQ121,53006d407764ad16491f823d25f2781ba55363aee9cb304d3f5d9450cf25d5c1,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/ALQ_J.xpt,2026-10-20T01:04:39.272979+00:00

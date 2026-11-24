@@ -1,0 +1,93 @@
+table	key	field	target	reference
+flow	all	N	39156	Figure 1 / Table S16
+flow	age	N	11182	Figure 1 / Table S16
+flow	fasting	N	4664	Figure 1 / Table S16
+flow	both	N	3523	Figure 1 / Table S16
+flow	missing_adiposity	N	835	Figure 1 / Table S16
+flow	final	N	2688	Figure 1 / Table S16
+stage_counts	0	Freq	235	Table 2
+stage_counts	1	Freq	741	Table 2
+stage_counts	2	Freq	1533	Table 2
+stage_counts	3	Freq	18	Table 2
+stage_counts	4	Freq	161	Table 2
+models	local	OR	0.54	Table S9
+models	local	lower	0.43	Table S9
+models	local	upper	0.69	Table S9
+models	local	p	<0.001	Table S9
+models	primary	OR	0.56	Table S9
+models	primary	lower	0.44	Table S9
+models	primary	upper	0.72	Table S9
+models	primary	p	<0.001	Table S9
+models	stage_2_4	OR	0.75	Table S9
+models	stage_2_4	lower	0.58	Table S9
+models	stage_2_4	upper	0.97	Table S9
+models	stage_2_4	p	0.030	Table S9
+models	age	OR	0.63	Table S10
+models	age	lower	0.49	Table S10
+models	age	upper	0.83	Table S10
+models	age	p	0.001	Table S10
+models	C07	OR	0.52	Table S11
+models	C07	lower	0.38	Table S11
+models	C07	upper	0.71	Table S11
+models	C07	p	<0.001	Table S11
+models	C07	N	2262	Figure 3 and Table S27
+models	C07	advanced	150	Table S27
+models	C08	OR	0.51	Table S11
+models	C08	lower	0.37	Table S11
+models	C08	upper	0.70	Table S11
+models	C08	p	<0.001	Table S11
+models	C08	N	2262	Figure 3 and Table S27
+models	C08	advanced	150	Table S27
+models	C09	OR	0.51	Table S11
+models	C09	lower	0.38	Table S11
+models	C09	upper	0.69	Table S11
+models	C09	p	<0.001	Table S11
+models	C09	N	2262	Figure 3 and Table S27
+models	C09	advanced	150	Table S27
+models	C10	OR	0.51	Table S11
+models	C10	lower	0.37	Table S11
+models	C10	upper	0.68	Table S11
+models	C10	p	<0.001	Table S11
+models	C10	N	2262	Figure 3 and Table S27
+models	C10	advanced	150	Table S27
+models	C11	OR	0.67	Table S11
+models	C11	lower	0.49	Table S11
+models	C11	upper	0.93	Table S11
+models	C11	p	0.018	Table S11
+models	C11	N	1445	Figure 3 and Table S27
+models	C11	advanced	150	Table S27
+models	primary	N	2688	Table S13
+models	primary	advanced	179	Table S13
+models	omit_2011-2012	OR	0.60	Table S13
+models	omit_2011-2012	lower	0.46	Table S13
+models	omit_2011-2012	upper	0.78	Table S13
+models	omit_2011-2012	p	<0.001	Table S13
+models	omit_2011-2012	N	2003	Table S13
+models	omit_2011-2012	advanced	132	Table S13
+models	omit_2013-2014	OR	0.58	Table S13
+models	omit_2013-2014	lower	0.43	Table S13
+models	omit_2013-2014	upper	0.78	Table S13
+models	omit_2013-2014	p	<0.001	Table S13
+models	omit_2013-2014	N	1910	Table S13
+models	omit_2013-2014	advanced	138	Table S13
+models	omit_2015-2016	OR	0.49	Table S13
+models	omit_2015-2016	lower	0.36	Table S13
+models	omit_2015-2016	upper	0.67	Table S13
+models	omit_2015-2016	p	<0.001	Table S13
+models	omit_2015-2016	N	2018	Table S13
+models	omit_2015-2016	advanced	130	Table S13
+models	omit_2017-2018	OR	0.59	Table S13
+models	omit_2017-2018	lower	0.45	Table S13
+models	omit_2017-2018	upper	0.77	Table S13
+models	omit_2017-2018	p	<0.001	Table S13
+models	omit_2017-2018	N	2133	Table S13
+models	omit_2017-2018	advanced	137	Table S13
+models	age	N	2688	Tables S9, S10
+models	age	advanced	179	Table 2 and Table S27
+models	stage_2_4	N	1712	Tables S9, S10
+models	stage_2_4	advanced	179	Table 2 and Table S27
+models	local	N	2688	Tables S9, S10
+models	local	advanced	179	Table 2 and Table S27
+diagnostics	fixed_local_score_r	value	0.927	Figure 3A
+diagnostics	drinkers	value	1853	Table 2
+diagnostics	ALQ_J_abstainer_skips	value	51	corrected ALQ_J branch audit

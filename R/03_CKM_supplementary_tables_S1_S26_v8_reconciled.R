@@ -1,4 +1,6 @@
 #!/usr/bin/env Rscript
+# Archived v1.0.2 source; use the tagged release to reproduce that historical workflow.
+stop("Superseded for the current manuscript. See RUN_ANALYSES.R and the current manuscript mapping.", call. = FALSE)
 
 # v2 syntax fix (2026-09-12): repaired all malformed double-bracket indexing
 # introduced as `x[ [ ... ] ]`; these are now valid `x[[ ... ]]` expressions.
